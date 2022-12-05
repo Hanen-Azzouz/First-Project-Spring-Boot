@@ -17,6 +17,7 @@ public class DetailsEquipeService implements  IDetailsEquipeService {
 
     @Override
     public DetailsEquipe updateDetailsEquipe(DetailsEquipe de) {
+
         return idetailsequiperepo.save(de);
     }
 
@@ -32,6 +33,7 @@ public class DetailsEquipeService implements  IDetailsEquipeService {
 
     @Override
     public List<DetailsEquipe> findAllDetailsEquipe() {
+
         return (List<DetailsEquipe>) idetailsequiperepo.findAll();
     }
 

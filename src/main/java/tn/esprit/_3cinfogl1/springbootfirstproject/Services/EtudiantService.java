@@ -18,6 +18,7 @@ public class EtudiantService implements IEtudiantService {
 
     @Override
     public Etudiant updateEtudiant(Etudiant etud) {
+
         return ietudiantrepo.save(etud);
     }
 
@@ -33,11 +34,13 @@ public class EtudiantService implements IEtudiantService {
 
     @Override
     public List<Etudiant> findAllEtudiant() {
+
         return (List<Etudiant>) ietudiantrepo.findAll();
     }
 
     @Override
     public Etudiant findEtudiantById(Long id) {
+
         return ietudiantrepo.findById(id).get();
     }
 }

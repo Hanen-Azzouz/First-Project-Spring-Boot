@@ -21,23 +21,28 @@ public class ContratRestController {
     }
     @PutMapping("modifierContrat")
     Contrat modifierContrat(@RequestBody Contrat c){
-        return IContratRest.updateContrat(c);
+
+    return IContratRest.updateContrat(c);
     }
     @DeleteMapping("supprimerContratobjet")
     void supprimerContrat(@RequestBody Contrat c){
-        IContratRest.deleteContrat(c);
+
+    IContratRest.deleteContrat(c);
     }
     @DeleteMapping("supprimerContratid/{id}")
     void supprimerContrat(@PathVariable Long id){
-        IContratRest.deleteContrat(id);
+
+    IContratRest.deleteContrat(id);
     }
     @GetMapping("findAllContrat")
     List<Contrat> findAllContrat(){
-        return IContratRest.findAllContrat();
+
+    return IContratRest.findAllContrat();
     }
     @GetMapping("findContartById")
     Contrat findContartById(@RequestParam Long id){//@RequestParam on ne met pas l'ID dans le mapping
-      return  IContratRest.findContartById(id);
+
+    return  IContratRest.findContartById(id);
     }
 
 }
