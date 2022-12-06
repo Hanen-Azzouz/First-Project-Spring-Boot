@@ -1,11 +1,12 @@
 package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Universite;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.UniversiteRepository;
 
 import java.util.List;
-
+@Service
 public class UniversiteService implements  IUniversiteService{
     @Autowired
     private UniversiteRepository iuniversiterepo;

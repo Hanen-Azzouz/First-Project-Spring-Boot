@@ -1,11 +1,12 @@
 package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Equipe;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EquipeRepository;
 
 import java.util.List;
-
+@Service
 public class EquipeService implements  IEquipeService{
     @Autowired//equivalent à @Injected
     private EquipeRepository iequiperepo;

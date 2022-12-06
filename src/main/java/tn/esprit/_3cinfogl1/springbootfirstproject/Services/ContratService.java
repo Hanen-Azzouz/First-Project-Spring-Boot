@@ -20,7 +20,7 @@ public class ContratService implements  IContratService{
 
     @Override
     public Contrat updateContrat(Contrat c) {
-        return icontratrepo.save(c);//si id de l'objet contrat c est not null ou bien xistant das bd dnc il le modifie
+        return icontratrepo.save(c);//si id de l'objet contrat c est not null ou bien existant das bd dnc il le modifie
     }
 
 
@@ -46,6 +46,11 @@ public class ContratService implements  IContratService{
     @Override
     public Contrat findContartById(Long id) {
         return icontratrepo.findById(id).get();//fonction get() return  objet si il existe ou bien vide sinon
+    }
+
+    @Override
+    public List<Contrat> searchContratByArchive(boolean archive) {
+        return icontratrepo.getByArchive(archive);
     }
 
 

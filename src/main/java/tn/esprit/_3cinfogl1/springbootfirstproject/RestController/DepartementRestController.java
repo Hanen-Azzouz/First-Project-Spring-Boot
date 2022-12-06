@@ -16,7 +16,8 @@ public class DepartementRestController {
 
    @PostMapping("ajoutDepartement")
      Departement ajoutDepartement(@RequestBody Departement d) {
-        return IDepartementRest.addDepartement(d) ;
+
+       return IDepartementRest.addDepartement(d) ;
     }
 
     @PutMapping("modifierDepartement")

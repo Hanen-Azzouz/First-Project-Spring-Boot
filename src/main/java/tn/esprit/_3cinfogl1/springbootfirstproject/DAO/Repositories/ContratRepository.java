@@ -17,6 +17,8 @@ public interface ContratRepository extends CrudRepository<Contrat,Long> {
 //select * from contrat where archive=(valeur) and dateDebutContrat=(parametre)
 
     List<Contrat> getContratByArchiveAndDateDebutC(boolean archive, Date datedebutc);
+
+
     //select * from contrat where dateDebutContrat>(param) and datedebutContrat<(parametre)
     List<Contrat> getContratByDateDebutCBetween(Date date1,Date date2);
 

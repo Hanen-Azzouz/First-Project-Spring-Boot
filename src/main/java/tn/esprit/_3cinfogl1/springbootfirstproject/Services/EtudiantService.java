@@ -1,11 +1,12 @@
 package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Etudiant;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EtudiantRepository;
 
 import java.util.List;
-
+@Service
 public class EtudiantService implements IEtudiantService {
 
     @Autowired//equivalent à @Injected

@@ -11,7 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("contratRest")
 public class ContratRestController {
-
+    //on doit faire l'injection de dépendance en déclarant une variable de type interface de service
     @Autowired
     private IContratService IContratRest;
 @PostMapping("ajoutContrat")
@@ -43,6 +43,10 @@ public class ContratRestController {
     Contrat findContartById(@RequestParam Long id){//@RequestParam on ne met pas l'ID dans le mapping
 
     return  IContratRest.findContartById(id);
+    }
+    @GetMapping("searchContratByArchive/{archive}")
+    List<Contrat> searchContratByArchive(@PathVariable boolean archive){
+    return IContratRest.searchContratByArchive(archive);
     }
 
 }
