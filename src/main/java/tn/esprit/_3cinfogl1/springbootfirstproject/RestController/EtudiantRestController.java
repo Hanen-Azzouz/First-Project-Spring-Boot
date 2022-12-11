@@ -16,9 +16,10 @@ import java.util.List;
        @Autowired
        private IEtudiantService IEtudiantRest;
 
-      @PostMapping("jouterEtudiant")
+      @PostMapping("ajouterEtudiant")
      Etudiant jouterEtudiant(@RequestBody Etudiant etud) {
-        return IEtudiantRest.addEtudiant(etud);
+
+          return IEtudiantRest.addEtudiant(etud);
     }
      @PutMapping("modifierEtudiant")
      Etudiant modifierEtudiant(@RequestBody Etudiant etud) {
@@ -27,11 +28,13 @@ import java.util.List;
     }
     @DeleteMapping("supprimerEtudiantobjet")
       void supprimerEtudiant(@RequestBody Etudiant etud) {
-        IEtudiantRest.deleteEtudiant(etud);
+
+          IEtudiantRest.deleteEtudiant(etud);
     }
       @DeleteMapping("supprimerEtudiantid/{id}")
      void supprimerEtudiant(@PathVariable Long id) {
-        IEtudiantRest.deleteEtudiant(id);
+
+          IEtudiantRest.deleteEtudiant(id);
     }
     @GetMapping("findAllEtudiant")
      List<Etudiant> findAllEtudiant() {
@@ -39,7 +42,7 @@ import java.util.List;
         return (List<Etudiant>) IEtudiantRest.findAllEtudiant();
     }
     @GetMapping("findEtudiantById/{id}")
-     Etudiant findEtudiantById(Long id) {
+     Etudiant findEtudiantById(@PathVariable Long id) {
 
         return IEtudiantRest.findEtudiantById(id);
     }
@@ -47,5 +50,30 @@ import java.util.List;
 
 
 
+    @GetMapping("findByIdEquipeAndSalle/{idequipe}/{salle}")
+      List<Etudiant> findByIdEquipeAndSalle(@PathVariable Long idequipe,@PathVariable Integer salle){
+          return  IEtudiantRest.findByIdEquipeAndSalle(idequipe,salle);
+    }
+       @GetMapping("findByIdEquipe/{idequipe}")
 
+       List<Etudiant> findByIdEquipe(long id){
+     return IEtudiantRest.findByIdEquipe(id);
+
+       }
+
+   @GetMapping("searchEtudiantByNomAndPrenomJpql/{nom}{prenom}")
+       Etudiant searchEtudiantByNomAndPrenomJpql(@PathVariable String nom,@PathVariable String prenom)
+   {
+       return IEtudiantRest.searchEtudiantByNomEtPrenomJpql(nom,prenom);
+
+   }
+   @GetMapping("searchEtudiantByNomEtPrenomSql/{nom}/{prenom}")
+       Etudiant searchEtudiantByNomEtPrenomSql(@PathVariable String nom,@PathVariable String prenom){
+          return  IEtudiantRest.searchEtudiantByNomEtPrenomSql(nom,prenom);
+       }
+
+   @GetMapping("searchEtudiantByNomSql/{nom}")
+   Etudiant searchEtudiantByNomSql(@RequestParam String nom){
+          return IEtudiantRest.searchEtudiantByNomSql(nom);
+   }
 }

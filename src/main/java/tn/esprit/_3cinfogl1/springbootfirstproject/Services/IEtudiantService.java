@@ -13,4 +13,17 @@ public interface IEtudiantService {
     List<Etudiant> findAllEtudiant();
     Etudiant findEtudiantById(Long id);
 
+
+    //functions with Keywords
+
+    List<Etudiant> findByIdEquipeAndSalle(Long id,int salle);
+
+    List<Etudiant> findByIdEquipe(long id);
+
+
+    Etudiant searchEtudiantByNomEtPrenomJpql(String nom,String prenom);
+    Etudiant searchEtudiantByNomEtPrenomSql(String nom,String prenom);
+    Etudiant searchEtudiantByNomSql(String nom);
+
+
 }

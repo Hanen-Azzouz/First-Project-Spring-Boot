@@ -28,12 +28,14 @@ public class DepartementRestController {
 
    @DeleteMapping("supprimerDepartementobjet")
     void supprimerDepartement(Departement d) {
-        IDepartementRest.deleteDepartement(d);
+
+       IDepartementRest.deleteDepartement(d);
     }
 
    @DeleteMapping("supprimerDepartementid/{id}")
    void supprimerDepartement(@PathVariable  Long id) {
-        IDepartementRest.deleteDepartement(id);
+
+       IDepartementRest.deleteDepartement(id);
     }
 
 @GetMapping("findAllDepartement")

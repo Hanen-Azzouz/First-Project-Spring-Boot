@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Contrat;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.ContratRepository;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -50,8 +51,16 @@ public class ContratService implements  IContratService{
 
     @Override
     public List<Contrat> searchContratByArchive(boolean archive) {
-        return icontratrepo.getByArchive(archive);
-    }
 
+        return (List<Contrat>)icontratrepo.getByArchive(archive);
+    }
+   @Override
+   public List<Contrat> searchContratByArchiveAndDateDebutC(boolean archive, Date datedebutc){
+        return (List<Contrat>)icontratrepo.getContratByArchiveAndDateDebutC(archive,datedebutc);
+   }
+   @Override
+  public List<Contrat> searchContratByDateDebutCBetween(Date date1,Date date2){
+        return (List<Contrat>)icontratrepo.getContratByDateDebutCBetween(date1,date2);
+   }
 
 }

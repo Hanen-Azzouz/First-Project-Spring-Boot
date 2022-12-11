@@ -43,5 +43,36 @@ public class EtudiantService implements IEtudiantService {
     public Etudiant findEtudiantById(Long id) {
 
         return ietudiantrepo.findById(id).get();
+
+
+
     }
-}
+
+
+    //Recherche en utilisant keywords
+    @Override
+    public List<Etudiant> findByIdEquipeAndSalle(Long id,int salle){
+        return ietudiantrepo.findByEquipesIdEquipeAnAndEquipesdetequipeSalle(id,salle);
+    }
+    @Override
+    public List<Etudiant> findByIdEquipe(long id){
+        return ietudiantrepo.findByEquipesIdEquipe(id);
+    }
+    //Recherche en utilisant JPQL
+    @Override
+    public  Etudiant searchEtudiantByNomEtPrenomJpql(String nom,String prenom){
+        return  ietudiantrepo.getEtudiantByPrenomEtNomJPQL(nom, prenom);
+    }
+    //Recherche en utilisant SQL
+    @Override
+    public  Etudiant searchEtudiantByNomEtPrenomSql(String nom,String prenom) {
+     return  ietudiantrepo.getEtudiantByPrenomEtNomSQL(nom,prenom);
+    }
+
+
+    @Override
+    public Etudiant searchEtudiantByNomSql(String nom){
+        return ietudiantrepo.getEtudiantByNomSql(nom);
+
+    }
+    }
