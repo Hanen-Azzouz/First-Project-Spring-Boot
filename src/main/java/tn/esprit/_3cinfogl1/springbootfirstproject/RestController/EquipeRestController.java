@@ -27,11 +27,12 @@ import java.util.List;
 
     @DeleteMapping("supprimerEquipeobjet")
      void supprimerEquipe(@RequestBody Equipe eq) {
-      IEquipeRest.deleteEquipe(eq);
+
+       IEquipeRest.deleteEquipe(eq);
     }
 
     @DeleteMapping("supprimerEquipeid/{id}")
-     void supprimerEquipe(@PathVariable Long id) {
+     void supprimerEquipe(@PathVariable long id) {
        IEquipeRest.deleteEquipe(id);
         ;
     }
@@ -41,7 +42,7 @@ import java.util.List;
         return (List<Equipe>) IEquipeRest.findAllEquipe();
     }
     @GetMapping("findEquipeById/{id}")
-    Equipe findEquipeById(@PathVariable Long id) {
+    Equipe findEquipeById(@PathVariable long id) {
 
         return IEquipeRest.findEquipeById(id);
     }

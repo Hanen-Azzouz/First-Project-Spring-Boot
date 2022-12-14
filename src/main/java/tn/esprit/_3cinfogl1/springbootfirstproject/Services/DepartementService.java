@@ -15,17 +15,20 @@ public class DepartementService implements IDepartementService{
 
     @Override
     public Departement addDepartement(Departement d) {
+
         return idepartrepo.save(d) ;
     }
 
     @Override
     public Departement updateDepartement(Departement d) {
+
         return idepartrepo.save(d);
     }
 
     @Override
     public void deleteDepartement(Departement d) {
-         idepartrepo.delete(d);
+
+        idepartrepo.delete(d);
     }
 
     @Override
@@ -35,6 +38,7 @@ public class DepartementService implements IDepartementService{
 
     @Override
     public List<Departement> findAllDepartement() {
+
         return (List<Departement>) idepartrepo.findAll();
     }
 

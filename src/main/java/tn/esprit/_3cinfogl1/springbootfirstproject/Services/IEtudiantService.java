@@ -1,6 +1,8 @@
 package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
+import org.springframework.data.repository.query.Param;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Etudiant;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Niveau;
 
 import java.util.List;
 
@@ -25,5 +27,10 @@ public interface IEtudiantService {
     Etudiant searchEtudiantByNomEtPrenomSql(String nom,String prenom);
     Etudiant searchEtudiantByNomSql(String nom);
 
+    Etudiant searchEtudiantByLevelParamSQL( Niveau niveau);
+
+    void deleteEtudiantByNomEtPrenomJPQL(String nom,String prenom);
+    void deleteEtudiantByNomEtPrenomSQL(String nom,String prenom);
+    void assignEtudiantToDepartement (Integer etudiantId, Integer departementId);
 
 }

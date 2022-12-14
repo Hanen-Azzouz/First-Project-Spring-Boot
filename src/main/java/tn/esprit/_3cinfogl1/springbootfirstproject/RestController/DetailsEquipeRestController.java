@@ -31,7 +31,7 @@ import java.util.List;
     }
 
    @DeleteMapping("supprimerDetailsEquipe/{id}")
-     void supprimerDetailsEquipe(@PathVariable Long id) {
+     void supprimerDetailsEquipe(@PathVariable long id) {
 
          IDetailsequipeRest.deleteDetailsEquipe(id);
     }
@@ -43,7 +43,7 @@ import java.util.List;
     }
 
      @GetMapping("findDetailsEquipeById/{id}")
-     DetailsEquipe findDetailsEquipeById(@PathVariable Long id) {
+     DetailsEquipe findDetailsEquipeById(@PathVariable long id) {
 
          return IDetailsequipeRest.findDetailsEquipeById(id);
     }

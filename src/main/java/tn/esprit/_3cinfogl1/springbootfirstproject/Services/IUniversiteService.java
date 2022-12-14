@@ -19,4 +19,8 @@ public interface IUniversiteService {
     List<Universite> findAllUniversite();
 
     Universite findUniversiteById(Long id);
+
+    void assignUniversiteToDepartement(Integer idUniversite,Integer idDepartement);
+
+
 }

@@ -54,6 +54,18 @@ public class ContratService implements  IContratService{
 
         return (List<Contrat>)icontratrepo.getByArchive(archive);
     }
+
+    @Override
+   public  List<Contrat> searchContratByIdEtudiantJPQL(Long idEtudiant){
+     return (List<Contrat>) icontratrepo.searchContratByIdEtudiantJPQL(idEtudiant);
+    }
+    @Override
+    public List<Contrat> searchContratByIdEtudiantSQL(Long idEtudiant){
+        return (List<Contrat>) icontratrepo.searchContratByIdEtudiantSQL(idEtudiant);
+    }
+
+
+
    @Override
    public List<Contrat> searchContratByArchiveAndDateDebutC(boolean archive, Date datedebutc){
         return (List<Contrat>)icontratrepo.getContratByArchiveAndDateDebutC(archive,datedebutc);
@@ -62,5 +74,10 @@ public class ContratService implements  IContratService{
   public List<Contrat> searchContratByDateDebutCBetween(Date date1,Date date2){
         return (List<Contrat>)icontratrepo.getContratByDateDebutCBetween(date1,date2);
    }
+
+
+
+
+
 
 }

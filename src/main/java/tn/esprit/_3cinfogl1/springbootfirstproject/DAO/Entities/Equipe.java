@@ -23,8 +23,9 @@ public class Equipe implements Serializable {
     private long idEquipe;
     private String nomEquipe;
     private Niveau niveau;
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private DetailsEquipe detequipe;
+
     @ManyToMany
     private List<Etudiant> etudiants;
 

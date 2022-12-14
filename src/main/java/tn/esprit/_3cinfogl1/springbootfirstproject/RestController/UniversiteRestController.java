@@ -28,11 +28,12 @@ public class UniversiteRestController {
 
     @DeleteMapping("supprimerUniversiteobjet")
      void supprimerUniversite(@RequestBody Universite u) {
+
         IUniversiteRest.deleteUniversite(u);
     }
 
     @DeleteMapping("supprimerUniversiteid/{id}")
-     void supprimerUniversite(@PathVariable Long id) {
+     void supprimerUniversite(@PathVariable long id) {
 
          IUniversiteRest.deleteUniversite(id);
     }
@@ -44,7 +45,7 @@ public class UniversiteRestController {
     }
 
       @GetMapping("findUniversiteById/{id}")
-     Universite findUniversiteById(@PathVariable Long id) {
+     Universite findUniversiteById(@PathVariable long id) {
 
          return IUniversiteRest.findUniversiteById(id);
     }

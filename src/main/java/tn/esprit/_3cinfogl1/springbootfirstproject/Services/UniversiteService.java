@@ -3,6 +3,7 @@ package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Universite;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.DepartementRepository;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.UniversiteRepository;
 
 import java.util.List;
@@ -10,6 +11,8 @@ import java.util.List;
 public class UniversiteService implements  IUniversiteService{
     @Autowired
     private UniversiteRepository iuniversiterepo;
+    @Autowired
+    private DepartementRepository idepartrepo;
 
     @Override
     public Universite addUniversite(Universite u) {
@@ -40,4 +43,16 @@ public class UniversiteService implements  IUniversiteService{
     public Universite findUniversiteById(Long id) {
         return iuniversiterepo.findById(id).get();
     }
+
+@Override
+public void assignUniversiteToDepartement(Integer idUniversite,Integer idDepartement){
+Universite universiteaffecte=iuniversiterepo.findById(Long.valueOf(idUniversite)).get();
+
+
+
+
+}
+
+
+
 }

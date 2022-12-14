@@ -33,7 +33,7 @@ public class DepartementRestController {
     }
 
    @DeleteMapping("supprimerDepartementid/{id}")
-   void supprimerDepartement(@PathVariable  Long id) {
+   void supprimerDepartement(@PathVariable  long id) {
 
        IDepartementRest.deleteDepartement(id);
     }
@@ -44,7 +44,7 @@ public class DepartementRestController {
     }
 
 @GetMapping("findDepartementById/{id}")
-    Departement findDepartementById(@PathVariable Long id) {
+    Departement findDepartementById(@PathVariable long id) {
 
        return IDepartementRest.findDepartementById(id);
     }

@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Etudiant;
 
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Niveau;
 import tn.esprit._3cinfogl1.springbootfirstproject.Services.IEtudiantService;
 
 import java.util.List;
@@ -32,7 +33,7 @@ import java.util.List;
           IEtudiantRest.deleteEtudiant(etud);
     }
       @DeleteMapping("supprimerEtudiantid/{id}")
-     void supprimerEtudiant(@PathVariable Long id) {
+     void supprimerEtudiant(@PathVariable long id) {
 
           IEtudiantRest.deleteEtudiant(id);
     }
@@ -42,7 +43,7 @@ import java.util.List;
         return (List<Etudiant>) IEtudiantRest.findAllEtudiant();
     }
     @GetMapping("findEtudiantById/{id}")
-     Etudiant findEtudiantById(@PathVariable Long id) {
+     Etudiant findEtudiantById(@PathVariable long id) {
 
         return IEtudiantRest.findEtudiantById(id);
     }
@@ -61,7 +62,7 @@ import java.util.List;
 
        }
 
-   @GetMapping("searchEtudiantByNomAndPrenomJpql/{nom}{prenom}")
+   @GetMapping("searchEtudiantByNomAndPrenomJpql/{nom}/{prenom}")
        Etudiant searchEtudiantByNomAndPrenomJpql(@PathVariable String nom,@PathVariable String prenom)
    {
        return IEtudiantRest.searchEtudiantByNomEtPrenomJpql(nom,prenom);
@@ -74,6 +75,33 @@ import java.util.List;
 
    @GetMapping("searchEtudiantByNomSql/{nom}")
    Etudiant searchEtudiantByNomSql(@RequestParam String nom){
+
           return IEtudiantRest.searchEtudiantByNomSql(nom);
    }
-}
+          @GetMapping("searchEtudiantByLevelParamSQL")
+       Etudiant searchEtudiantByLevelParamSQL( @RequestParam Niveau niveau){
+          return IEtudiantRest.searchEtudiantByLevelParamSQL(niveau);
+          }
+
+   @DeleteMapping("deleteEtudiantByNomEtPrenomJPQL")
+       void deleteEtudiantByNomEtPrenomJPQL(@RequestParam String nom,@RequestParam String prenom){
+          IEtudiantRest.deleteEtudiantByNomEtPrenomJPQL(nom,prenom);
+   }
+       @DeleteMapping("deleteEtudiantByNomEtPrenomSQL")
+       void deleteEtudiantByNomEtPrenomSQL(@RequestParam String nom,@RequestParam String prenom){
+           IEtudiantRest.deleteEtudiantByNomEtPrenomSQL(nom,prenom);
+       }
+
+
+
+
+   @PutMapping("affecteretudiantdepartement")
+       void affecterEudiantDepartement(@RequestParam Integer etudiantId, @RequestParam Integer departementId){
+
+          IEtudiantRest.assignEtudiantToDepartement(etudiantId,departementId);
+
+   }
+
+
+
+   }

@@ -12,9 +12,10 @@ import java.util.List;
 @RestController
 @RequestMapping("contratRest")
 public class ContratRestController {
-    //on doit faire l'injection de dépendance en déclarant une variable de type interface de service
+
     @Autowired
     private IContratService IContratRest;
+    //on doit faire l'injection de dépendance en déclarant une variable de type interface de service
 @PostMapping("ajoutContrat")
     Contrat ajoutContrat(@RequestBody Contrat c){
         return IContratRest.addContrat(c);
@@ -31,7 +32,7 @@ public class ContratRestController {
     IContratRest.deleteContrat(c);
     }
     @DeleteMapping("supprimerContratid/{id}")
-    void supprimerContrat(@PathVariable Long id){
+    void supprimerContrat(@PathVariable long id){
 
     IContratRest.deleteContrat(id);
     }
@@ -41,16 +42,23 @@ public class ContratRestController {
     return IContratRest.findAllContrat();
     }
     @GetMapping("findContartById")
-    Contrat findContartById(@RequestParam Long id){//@RequestParam on ne met pas l'ID dans le mapping
-
+    Contrat findContartById(@RequestParam long id){
+//@RequestParam on ne met pas l'ID dans le mapping
     return  IContratRest.findContartById(id);
     }
     @GetMapping("searchContratByArchive/{archive}")
     List<Contrat> searchContratByArchive(@PathVariable boolean archive){
     return IContratRest.searchContratByArchive(archive);
     }
+    @GetMapping("searchContratByIdEtudiantJPQL")
+    List<Contrat> searchContratByIdEtudiantJPQL(@RequestParam Long idEtudiant){
+    return  IContratRest.searchContratByIdEtudiantJPQL(idEtudiant);
 
-
+    }
+    @GetMapping("searchContratByIdEtudiantSQL")
+    List<Contrat> searchContratByIdEtudiantSQL(@RequestParam Long idEtudiant){
+    return  IContratRest.searchContratByIdEtudiantSQL(idEtudiant);
+    }
 
 
     @GetMapping("searchContratByArchiveAndDateDebutC/{archive}/{datedebut}")
