@@ -28,9 +28,9 @@ public class Etudiant implements Serializable {
     @ManyToOne
     private  Departement depart;
 
-    @ManyToMany(mappedBy = "etudiants")
+    @ManyToMany(mappedBy = "etudiants",cascade = CascadeType.ALL)
     private List<Equipe>equipes;
 
-    @OneToMany(mappedBy = "students")
+    @OneToMany(mappedBy = "students", cascade = CascadeType.ALL)
     private List<Contrat> contrats;
 }

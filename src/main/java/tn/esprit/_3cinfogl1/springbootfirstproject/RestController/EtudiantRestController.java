@@ -96,9 +96,16 @@ import java.util.List;
 
 
    @PutMapping("affecteretudiantdepartement")
-       void affecterEudiantDepartement(@RequestParam Integer etudiantId, @RequestParam Integer departementId){
+       void affecterEtudiantDepartement(@RequestParam Integer etudiantId, @RequestParam Integer departementId){
 
           IEtudiantRest.assignEtudiantToDepartement(etudiantId,departementId);
+
+   }
+   @PostMapping("addAndAssignEtudiantToEquipeAndContract")
+       Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant etudiant, Integer idContrat, Integer
+               idEquipe)
+   {
+       return  IEtudiantRest.addAndAssignEtudiantToEquipeAndContract(etudiant,idContrat,idEquipe);
 
    }
 

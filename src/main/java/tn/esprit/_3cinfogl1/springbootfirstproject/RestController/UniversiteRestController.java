@@ -16,40 +16,46 @@ public class UniversiteRestController {
     private IUniversiteService IUniversiteRest;
 
     @PostMapping("ajouterUniversite")
-     Universite ajouterUniversite(@RequestBody Universite u) {
-         return IUniversiteRest.addUniversite(u) ;
+    Universite ajouterUniversite(@RequestBody Universite u) {
+        return IUniversiteRest.addUniversite(u);
     }
 
     @PutMapping("modifierUniversite")
-     Universite modifierUniversite(@RequestBody Universite u) {
+    Universite modifierUniversite(@RequestBody Universite u) {
 
-         return IUniversiteRest.updateUniversite(u);
+        return IUniversiteRest.updateUniversite(u);
     }
 
     @DeleteMapping("supprimerUniversiteobjet")
-     void supprimerUniversite(@RequestBody Universite u) {
+    void supprimerUniversite(@RequestBody Universite u) {
 
         IUniversiteRest.deleteUniversite(u);
     }
 
     @DeleteMapping("supprimerUniversiteid/{id}")
-     void supprimerUniversite(@PathVariable long id) {
+    void supprimerUniversite(@PathVariable long id) {
 
-         IUniversiteRest.deleteUniversite(id);
+        IUniversiteRest.deleteUniversite(id);
     }
 
     @GetMapping("findAllUniversite")
-     List<Universite> findAllUniversite() {
+    List<Universite> findAllUniversite() {
 
-         return (List<Universite>) IUniversiteRest.findAllUniversite();
+        return (List<Universite>) IUniversiteRest.findAllUniversite();
     }
 
-      @GetMapping("findUniversiteById/{id}")
-     Universite findUniversiteById(@PathVariable long id) {
+    @GetMapping("findUniversiteById/{id}")
+    Universite findUniversiteById(@PathVariable long id) {
 
-         return IUniversiteRest.findUniversiteById(id);
+        return IUniversiteRest.findUniversiteById(id);
     }
 
+    @PutMapping("affecterDepartementToUniversite")
+    void affecterDepartementToUniversite(@RequestParam Integer universiteId , @RequestParam Integer departementId) {
+        IUniversiteRest.assignUniversiteToDepartement(universiteId,departementId);
 
-
+    }
 }
+
+
+

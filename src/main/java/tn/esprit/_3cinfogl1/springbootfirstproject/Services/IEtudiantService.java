@@ -32,5 +32,10 @@ public interface IEtudiantService {
     void deleteEtudiantByNomEtPrenomJPQL(String nom,String prenom);
     void deleteEtudiantByNomEtPrenomSQL(String nom,String prenom);
     void assignEtudiantToDepartement (Integer etudiantId, Integer departementId);
+    Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer
+            idEquipe);
+
+
+
 
 }

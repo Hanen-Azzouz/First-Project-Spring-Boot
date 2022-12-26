@@ -23,4 +23,9 @@ public interface IContratService {
 
     List<Contrat> searchContratByArchiveAndDateDebutC(boolean archive, Date datedebutc);
     List<Contrat> searchContratByDateDebutCBetween(Date date1,Date date2);
+
+
+    Contrat affectContratToEtudiant (Contrat ce, String nom,String prenomE );
+
+
 }

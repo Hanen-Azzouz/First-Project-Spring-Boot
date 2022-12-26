@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Contrat;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Etudiant;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.ContratRepository;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EtudiantRepository;
 
 import java.util.Date;
 import java.util.List;
@@ -13,6 +15,9 @@ import java.util.List;
 public class ContratService implements  IContratService{
     @Autowired//equivalent à @Injected
     private ContratRepository icontratrepo;
+
+    @Autowired
+    private EtudiantRepository ietudiantrepo;
 
     @Override
     public Contrat addContrat(Contrat c) {
@@ -74,7 +79,16 @@ public class ContratService implements  IContratService{
   public List<Contrat> searchContratByDateDebutCBetween(Date date1,Date date2){
         return (List<Contrat>)icontratrepo.getContratByDateDebutCBetween(date1,date2);
    }
+    @Override
+    public Contrat affectContratToEtudiant (Contrat ce, String nom,String prenomE ) {
+        Etudiant etudiantAffecte = ietudiantrepo.getEtudiantByPrenomEtNomJPQL(nom, prenomE);
+        if (etudiantAffecte.getContrats().size() < 5)
+              { etudiantAffecte.getContrats().add(ce);
+               ietudiantrepo.save(etudiantAffecte);}
+           return ce;
 
+
+    }
 
 
 

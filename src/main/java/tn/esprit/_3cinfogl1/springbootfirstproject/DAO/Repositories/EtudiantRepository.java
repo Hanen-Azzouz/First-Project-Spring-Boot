@@ -24,7 +24,7 @@ public interface EtudiantRepository extends CrudRepository<Etudiant,Long> {
 
 
     //afficher l'etudiant dont le nom et le prenom en parametres avec méthode jpql
-    @Query("select student from Etudiant student where student.prenomE=:prenom and student.nomE=:nom" )
+    @Query("select student from Etudiant student where  student.nomE=:nom and student.prenomE=:prenom" )
     Etudiant getEtudiantByPrenomEtNomJPQL(@Param(value = "nom") String nom, @Param(value="prenom") String prenom);
 
     //afficher l'etudiant dont le nom et le prenom en parametres avec méthode SQL

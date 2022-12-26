@@ -2,10 +2,10 @@ package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Departement;
-import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Etudiant;
-import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.Niveau;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Entities.*;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.ContratRepository;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.DepartementRepository;
+import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EquipeRepository;
 import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EtudiantRepository;
 
 import java.util.List;
@@ -16,6 +16,10 @@ public class EtudiantService implements IEtudiantService {
     private EtudiantRepository ietudiantrepo;
     @Autowired
     private DepartementRepository idepartrepo;
+    @Autowired
+    private ContratRepository icontratrepo;
+    @Autowired
+    private EquipeRepository iequiperepo;
 
     @Override
     public Etudiant addEtudiant(Etudiant etud) {
@@ -110,5 +114,19 @@ public class EtudiantService implements IEtudiantService {
        //save pour le parent
 
     }
+
+    @Override
+    public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer
+            idEquipe)
+    {
+        Contrat contrataffecte = icontratrepo.findById(Long.valueOf(idContrat)).get();
+        Equipe equipeaffectee = iequiperepo.findById(Long.valueOf(idEquipe)).get();
+        e.getEquipes().add(equipeaffectee);
+        e.getContrats().add(contrataffecte);
+        return ietudiantrepo.save(e);
+    }
+
+
+
 
     }

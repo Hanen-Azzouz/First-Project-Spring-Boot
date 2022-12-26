@@ -71,4 +71,13 @@ public class ContratRestController {
 
     }
 
+
+    @PutMapping("affecterContratToEtudiant")
+   Contrat affectContratToEtudiant (@RequestParam Contrat ce, @RequestParam String nom,@RequestParam String prenom )
+    {return  IContratRest.affectContratToEtudiant(ce,nom,prenom);
+
+
+    }
+
+
 }

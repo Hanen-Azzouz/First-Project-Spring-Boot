@@ -23,6 +23,7 @@ public class Equipe implements Serializable {
     private long idEquipe;
     private String nomEquipe;
     private Niveau niveau;
+
     @OneToOne(cascade=CascadeType.ALL)
     private DetailsEquipe detequipe;
 
