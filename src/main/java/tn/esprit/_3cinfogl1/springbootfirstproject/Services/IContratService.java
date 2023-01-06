@@ -26,6 +26,6 @@ public interface IContratService {
 
 
     Contrat affectContratToEtudiant (Contrat ce, String nom,String prenomE );
-
+    String retrieveAndUpdateStatusContrat();
 
 }

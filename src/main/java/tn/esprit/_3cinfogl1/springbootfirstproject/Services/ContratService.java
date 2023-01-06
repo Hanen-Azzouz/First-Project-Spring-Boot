@@ -1,5 +1,6 @@
 package tn.esprit._3cinfogl1.springbootfirstproject.Services;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,8 @@ import tn.esprit._3cinfogl1.springbootfirstproject.DAO.Repositories.EtudiantRepo
 
 import java.util.Date;
 import java.util.List;
-
+import java.util.concurrent.TimeUnit;
+@Slf4j
 @Service
 public class ContratService implements  IContratService{
     @Autowired//equivalent à @Injected
@@ -90,8 +92,26 @@ public class ContratService implements  IContratService{
 
     }
 
+    @Override
+    public String retrieveAndUpdateStatusContrat() {
+         String msgForAdmin="";
+         int nbrJours=0;
+        List<Contrat> contratsVerifies= icontratrepo.getByArchive(false);
+        for(Contrat c:contratsVerifies){
+           nbrJours+= calculDiff(c.getDateFinC() ,new Date())+1;
+           if(nbrJours==0){
+               c.setArchive(true);
+               icontratrepo.save(c);
+               log.warn("Le contrat"+c.getIdContrat()+"de l'étudiant"+c.getStudents().getNomE()+
+                       c.getStudents().getPrenomE()+"est expiré");}
+           else if (nbrJours==15){
+               msgForAdmin+="le contrat"+c.getIdContrat()+"sera expiré dans 15 jours";}
+        }
+          return msgForAdmin;
+    }
 
-
-
-
+    public long calculDiff(Date date1, Date date2) {
+        long diffInMillies = date1.getTime() - date2.getTime();
+        return TimeUnit.DAYS.convert(diffInMillies, TimeUnit.MILLISECONDS);
+    }
 }
