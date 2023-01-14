@@ -11,6 +11,9 @@ import java.util.List;
 
 @Repository
 public interface EquipeRepository extends CrudRepository<Equipe,Long> {
+
+
+
     //Afficher la liste d'équipes avec une thématique passé en paramétre avec jpql
     //les noms de classes et attributs des objets utilisés
     @Query("select alias1 from Equipe alias1,DetailsEquipe alias2 where " +
